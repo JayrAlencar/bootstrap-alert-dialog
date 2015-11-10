@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bootstrap-alert-dialog</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+<body>
+
+</body>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript">
+
+window.alert = function(txt) {
+    createCustomAlert(txt);
+}
+
+function createCustomAlert(txt) {
+	var language_default = {
+		title: "Confirmação",
+		btn_dismiss: "OK"
+	}
+
+	var modal = $('<div/>',{class:'modal fade'});
+	var modal_dialog = $('<div/>',{class:'modal-dialog'});
+	var modal_content = $('<div/>',{class:'modal-content'});
+	var modal_header = $('<div/>',{class: 'modal-header'})
+	.append('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>')
+	.append('<h5 class="modal-title">'+(language_default.title)+'</h5>');
+	var modal_body = $('<div/>',{class: 'modal-body'})
+	.append('<h3>'+txt+'</h3>');
+	var btn_dismiss = $('<button/>',{
+		class:' btn btn-info',
+		type:'button',
+		'data-dismiss':'modal'
+	}).html('<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> '+language_default.btn_dismiss);
+
+	
+
+	var modal_footer = $('<div/>',{class: 'modal-footer'})
+	.append(btn_dismiss)
+	
+
+	modal_content.append(modal_header).append(modal_body).append(modal_footer).appendTo(modal_dialog);
+
+	modal.append(modal_dialog).modal('show');
+
+	return false;
+	
+}
+
+alert('Obrigado');
+
+</script>
+</html>
